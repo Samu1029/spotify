@@ -8,6 +8,7 @@ import { SectionGenericComponent } from './component/section-generic/section-gen
 import { PlayListHeaderComponent } from './component/play-list-header/play-list-header.component';
 import { PlayListBodyComponent } from './component/play-list-body/play-list-body.component';
 import { OrderListPipe } from './pipe/order-list.pipe';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { OrderListPipe } from './pipe/order-list.pipe';
     OrderListPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     SideBarComponent,
@@ -31,7 +33,8 @@ import { OrderListPipe } from './pipe/order-list.pipe';
     CardPlayerComponent,
     SectionGenericComponent,
     PlayListHeaderComponent,
-    PlayListBodyComponent
+    PlayListBodyComponent,
+    OrderListPipe
   ]
 })
 export class SharedModule { }
