@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterEvent } from '@angular/router';
 import { AuthService } from '@modules/auth/services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -13,7 +13,7 @@ export class LoginPageComponent {
   errorSession: boolean = false
   formLogin: UntypedFormGroup = new UntypedFormGroup({});
 
-  constructor(private authService: AuthService, private cooki: CookieService) { }
+  constructor(private authService: AuthService, private cooki: CookieService, private router: Router) { }
 
   ngOnInit(): void {
     this.formLogin = new UntypedFormGroup(
@@ -39,6 +39,8 @@ export class LoginPageComponent {
       console.log('Sesion iniciada correctamente 🆗🆗')
       const { tokenSession, data } = responseOk
       this.cooki.set('token', tokenSession, 4, '/')
+      this.router.navigate(['/', 'tracks']);
+      
     },
       err => {
         console.log('Error al iniciar sesion ❌❌❌')
